@@ -27,9 +27,11 @@
       <!--<img id="marsnevenekskdemo" src="https://ucarecdn.com/1b676bc8-54fe-458d-910a-3ddee53d9a4c/" crossorigin="anonymous"/>-->
     </a-assets>
 
-    <a-camera>
-      <a-cursor></a-cursor>
+<a-entity v-bind:position='position'>
+    <a-camera wasd-controls-enabled='false'>
+      <a-cursor color="#22A7F0"></a-cursor>
     </a-camera>
+</a-entity>
 
     <a-sky src='#sky'></a-sky>
     <a-plane height='80' width='10' src='#concrete' rotation='-90 0 0' repeat='5 40' position='0 0 -35'></a-plane>
@@ -37,6 +39,13 @@
      <a-plane height='10' width='10' src='#brick' rotation='0 -90 0' position='5 5 0'></a-plane>
      <a-plane height='10' width='10' src='#brick' rotation='0 180 0' position='0 5 5'></a-plane>
      <a-plane height='10' width='10' src='#brick'  position='0 5 -65'></a-plane>
+
+     <a-sphere color='#F4D03F' v-on:click='move(-10)' position='0 -.5 -10'></a-sphere>
+     <a-sphere color='#F4D03F' v-on:click='move(-20)' position='0 -.5 -20'></a-sphere>
+     <a-sphere color='#F4D03F' v-on:click='move(-30)' position='0 -.5 -30'></a-sphere>
+     <a-sphere color='#F4D03F' v-on:click='move(-40)' position='0 -.5 -40'></a-sphere>
+     <a-sphere color='#F4D03F' v-on:click='move(-50)' position='0 -.5 -50'></a-sphere>
+     <a-sphere color='#F4D03F' v-on:click='move(-60)' position='0 -.5 -60'></a-sphere>
     
      
 
@@ -53,6 +62,7 @@ export default {
   name: 'app',
   data () {
     return {
+      position: '0 0 0',
       tags: [
             {header: '', side: 'right', img: '#blockandthrow',
               blurb: '1) Blockbuster: This is a large throw-up in blocky letters. They are used to cover a large area in a small amount of time. They’re often painted with rollers which make them easier and faster to do.\n2) Throw up: This is a more complicated version of a tag. It has two or more colors and typically uses bubble-style lettering.'},
@@ -69,11 +79,11 @@ export default {
       ],
       tagleft: [
             {header: '', side: 'right', img: '#cornbread',
-            blurb:"Graffiti originated in the late 60s in Philadelphia with a high school student named Cornbreadwho began using the art form as a way to gain attention from the community. Urban graffiti isalso accredited to New York City around the same time period. In the late 1960s, Taki 183, usedhis profession as a messenger as a guide through spreading his art throughout subway trains.By writing his name on every track that he went to he gained a notoriety that many othersbecame inspired by and wanted to mimic through by the same idea."},
+            blurb:"Graffiti originated in the late 60s in Philadelphia with a high school student named Cornbread who began using the art form as a way to gain attention from the community. Urban graffiti isalso accredited to New York City around the same time period. In the late 1960s, Taki 183, used his profession as a messenger as a guide through spreading his art throughout subway trains.By writing his name on every track that he went to he gained a notoriety that many others became inspired by and wanted to mimic through by the same idea."},
             {header: '', side: 'right', img: '#trains',
-            blurb: "The word “graffiti” comes from the Italian word graffiato meaning “scratched.”A big effort that was emphasized by artists was the intention of getting their names around asmuch as possible but once that was achieved, they would start to outdo each other in terms ofstyle. Spray cans were utilized as a way of doing the art more efficiently and more easilyavoiding getting caught by someone. They allowed for graffiti to evolve from small tags on theinsides of trains to huge murals on many different subway cars."},
+            blurb: "The word “graffiti” comes from the Italian word graffiato meaning “scratched.”A big effort that was emphasized by artists was the intention of getting their names around as much as possible but once that was achieved, they would start to outdo each other in terms of style. Spray cans were utilized as a way of doing the art more efficiently and more easily avoiding getting caught by someone. They allowed for graffiti to evolve from small tags on the insides of trains to huge murals on many different subway cars."},
             {header: '', side: 'right', img: '#dondi',
-            blurb: "1970s “style wars”: older artists began taking on younger ones to help them with large pieces.Writing crews started to come around, who would collaborate and share their future ideastogether and then figure out how to emulate them."},
+            blurb: "1970s “style wars”: older artists began taking on younger ones to help them with large pieces. Writing crews started to come around, who would collaborate and share their future ideas together and then figure out how to emulate them."},
             {header: '', side: 'right', img: '#first_pol',
               blurb: 'Politics has long been a part of modern graffiti culture. The illegal nature of graffiti is a political statement in itself - an act of protest against the establishment and its norms, and unquestioning respect for property rights over human rights.'},
             {header: '', side: 'right', img: '#second_pol',
@@ -86,6 +96,11 @@ export default {
   components: {
     'wall': Wall,
     'gstyles': gStyles
+  },
+  methods: {
+    move: function(z){
+      this.$data.position = "0 0 " + z
+    }
   }
 }
 </script>
